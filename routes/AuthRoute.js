@@ -47,7 +47,7 @@ router.post('/register',async (req,res)=>{
             
             res.status(200).json({email:req.body.email,
                 token,
-                message:'Signup successful!'
+                message:'Signup successful! Check your email for varification.'
             });
             
     } catch (error) {
@@ -87,6 +87,7 @@ router.post('/login', async (req,res)=> {
             if (token) {
                 res.json({token,
                         email:req.body.email,
+                        data:doc,
                         massage:'logined successfully!',
                         })
             } 
