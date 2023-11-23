@@ -167,7 +167,7 @@ router.post('/verify-email', async (req, res) => {
       <p style="font-size: 16px; color: #666; max-width: 400px; margin: 0 auto 20px;">
         Thank you for registering! Please verify your email address to activate your account.
       </p>
-      <a href="http://localhost:3000/verify/${token}" style="background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 5px;">
+      <a href="http://realtyprop.in/verify/${token}" style="background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 5px;">
         Verify Email
       </a>
     </div>`
