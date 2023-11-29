@@ -47,7 +47,7 @@ router.post('/register',async (req,res)=>{
             
             res.status(200).json({email:req.body.email,
                 token,
-                message:'Signup successful! Check your email for varification.'
+                message:'"Signup successful! Check your email for verification."'
             });
             
     } catch (error) {
