@@ -19,8 +19,8 @@ const fs = require('fs');
 const authMiddlewares = require('./middleware/authMiddlewares');
 const { Server } = require('http');
 
-const data = JSON.parse(fs.readFileSync('data.json','utf-8'));
-const users =data.users;
+// const data = JSON.parse(fs.readFileSync('data.json','utf-8'));
+// const users =data.users;
  
 
 
