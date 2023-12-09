@@ -12,6 +12,7 @@ router
     .get('/:id',propertycontroller.readProperty)
     .put('/:id',authMiddlewares,propertycontroller.updatePropertyPut)
     .patch('/:id',authMiddlewares,propertycontroller.upadatePropertypatch)
+    .patch('/:id/images',authMiddlewares,propertycontroller.upadatePropertyimagespatch)
     .delete('/:id',authMiddlewares,propertycontroller.deleteProperty)
 
     

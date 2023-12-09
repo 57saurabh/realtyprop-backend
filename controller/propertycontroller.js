@@ -138,3 +138,54 @@ exports.deleteProperty = async(req,res)=>{
       res.status(500).json({ message: 'Error Deleting product', error });
     }
 }
+
+
+// Backend Route to Update Property Images
+exports.upadatePropertyimagespatch =  async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const uploadedImages = [];
+
+    // Check if any files were uploaded
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).json({ message: 'No images uploaded' });
+    }
+// Assuming req.files is an array, use forEach instead of for...of
+for (const file of req.files.images) {
+  console.log(file)
+  try {
+    const result = await cloudinary.uploader.upload(file.tempFilePath, {
+      folder: "images"
+    });
+    uploadedImages.push(result.secure_url);
+  } catch (uploadError) {
+    console.error('Error uploading image to Cloudinary:', uploadError);
+    return res.status(500).json({ message: 'Error uploading images', error: uploadError.message });
+  }
+}
+
+
+if (uploadedImages.length === 0) {
+  return res.status(400).json({ message: 'No images uploaded successfully' });
+}
+
+
+ 
+    // Fetch the property by ID from the database
+    const property = await Property.findById(id);
+
+    // Update the property's images
+    property.images = uploadedImages;
+    property.thumbnail= uploadedImages[0]
+
+    // Save the updated property back to the database
+    await property.save();
+
+    res.status(200).json({ message: 'Images updated successfully' });
+  }
+   catch (error) {
+    console.error('Error updating images:', error);
+    res.status(500).json({ message: 'Error updating images', error: error.message });
+  }
+};
