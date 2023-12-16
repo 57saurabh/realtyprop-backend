@@ -66,6 +66,10 @@ const propertySchema = new Schema({
   },
   featured:{
     type:Boolean
+  },
+  date:{
+    type:Date,
+    default:Date.now
   }
 });
 
